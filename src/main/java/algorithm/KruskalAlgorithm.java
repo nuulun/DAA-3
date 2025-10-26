@@ -14,7 +14,6 @@ public class KruskalAlgorithm {
         List<Edge> edges = new ArrayList<>(graph.getEdges());
         edges.sort(Comparator.comparingInt(Edge::getWeight));
 
-        // Сопоставляем имена вершин с индексами для Union-Find
         Map<String, Integer> indexMap = new HashMap<>();
         List<String> nodes = graph.getNodes();
         for (int i = 0; i < nodes.size(); i++) indexMap.put(nodes.get(i), i);
@@ -37,7 +36,6 @@ public class KruskalAlgorithm {
         return new MSTResult(mst, totalCost, operations, (double) (end - start) / 1_000_000);
     }
 
-    // --- Вспомогательный класс Union-Find ---
     private static class UnionFind {
         int[] parent, rank;
 
